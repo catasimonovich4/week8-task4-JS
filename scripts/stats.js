@@ -820,6 +820,71 @@ for (let i = 0; i < pastEventsCatNoRep.length; i++) {
 console.log("arrayPastEvRevenues", arrayPastEvRevenues) 
 
 
+// ------------- Attendance calculation -------------
+
+/*
+    function attendanceUpEvents(event) {
+        let counter = Math.round((event.estimate*100)/event.capacity)
+        return counter
+    }
+
+    function attendancePastEvents(event) {
+        let counter = Math.round((event.assistance*100)/event.capacity)
+        return counter
+    }
+*/
+
+// Upcoming Events attendance percentage
+let upCapacity = 0;
+let upEstimate = 0;
+let perUEAttendance = 0;
+let arrayUpEvAttendance = [];
+for (let i = 0; i < upEventsCatNoRep.length; i++) {
+    arrayUpEvAttendance.push(upEventsCatNoRep[i])
+    for ( let e = 0; e < arrayUpcomingEvents.length; e++) {
+        if (upEventsCatNoRep[i] === arrayUpcomingEvents[e].category) {
+            //console.log(arrayUpcomingEvents[e].capacity)
+            upCapacity = upCapacity + Number(arrayUpcomingEvents[e].capacity)
+            console.log("upCapacity", upCapacity)
+            //console.log(arrayUpcomingEvents[e].estimate)
+            upEstimate = upEstimate + Number(arrayUpcomingEvents[e].estimate)
+            console.log("upEstimate", upEstimate)
+        }
+        //console.log("upCapacity", upCapacity)
+        //console.log("upEstimate", upEstimate)
+    }
+    perUEAttendance = Math.round( ( upEstimate * 100 ) / upCapacity )
+    console.log("perUEAttendance", perUEAttendance)
+    arrayUpEvAttendance.push(perUEAttendance)
+}
+console.log("arrayUpEvAttendance", arrayUpEvAttendance)
+
+
+// Past Events attendance percentage 
+let pastCapacity = 0;
+let pastAssistance = 0;
+let perPEAttendance = 0;
+arrayPastEvAttendance = [];
+for (let i = 0; i < pastEventsCatNoRep.length; i++) {
+    arrayPastEvAttendance.push(pastEventsCatNoRep[i])
+    for ( let e = 0; e < arrayPastEvents.length; e++) {
+        if (pastEventsCatNoRep[i] === arrayPastEvents[e].category) {
+            pastCapacity = pastCapacity + Number(arrayPastEvents[e].capacity)
+            console.log("pastCapacity", pastCapacity)
+            pastAssistance = pastAssistance + Number(arrayPastEvents[e].assistance)
+            console.log("pastAssistance", pastAssistance)
+        }
+    }
+    perPEAttendance = Math.round( ( pastAssistance * 100 ) / pastAssistance )
+    console.log("perPEAttendance", perPEAttendance)
+    arrayPastEvAttendance.push(perPEAttendance)
+}
+console.log("arrayPastEvAttendance", arrayPastEvAttendance)
+
+
+
+
+
 // ------------- Set stats in table -------------
 
 // Highest porcentage of attendance column
@@ -898,6 +963,23 @@ for (let i = 0; i < arrayUpEvRevenues.length - 1; i++) {
     }
 }
 
+// Attendance
+const tdUpAttendance = document.querySelectorAll(".attendance-stats")
+const tdUpAttendanceByID = document.getElementById("attendance-up-stats")
+for (let i = 0; i < arrayUpEvAttendance.length - 1; i++) {
+    const divAttendance = document.createElement("div")
+    for (let e = 0; e < upEventsCatNoRep.length; e++) {
+        if (arrayUpEvAttendance[i] === upEventsCatNoRep[e]) {
+            divAttendance.innerHTML = `
+                <div style="display: flex; justify-content: space-between;" >
+                    <p>%${arrayUpEvAttendance[i+1]}</p>
+                </div>
+            `
+            tdUpAttendanceByID.appendChild(divAttendance)
+        }
+    }
+}
+
 
 
 
@@ -916,7 +998,7 @@ pastEventsCatNoRep.forEach(event => {
 })
 
 // Revenues 
-const tdPastRevenues = document.querySelectorAll(".revenue-past-stats")
+const tdPastRevenues = document.querySelectorAll(".revenue-stats")
 const tdPastRevenuesByID = document.getElementById("revenue-past-stats")
 for (let i = 0; i < arrayPastEvRevenues.length - 1; i++) {
     const divRevenue = document.createElement("div")
@@ -932,3 +1014,19 @@ for (let i = 0; i < arrayPastEvRevenues.length - 1; i++) {
     }
 }
 
+// Attendance
+const tdPastAttendance = document.querySelectorAll(".attendance-stats")
+const tdPastAttendanceByID = document.getElementById("attendance-past-stats")
+for (let i = 0; i < arrayPastEvAttendance.length - 1; i++) {
+    const divAttendance = document.createElement("div")
+    for (let e = 0; e < pastEventsCatNoRep.length; e++) {
+        if (arrayPastEvAttendance[i] === pastEventsCatNoRep[e]) {
+            divAttendance.innerHTML = `
+                <div style="display: flex; justify-content: space-between;" >
+                    <p>%${arrayPastEvAttendance[i+1]}</p>
+                </div>
+            `
+            tdPastAttendanceByID.appendChild(divAttendance)
+        }
+    }
+}
