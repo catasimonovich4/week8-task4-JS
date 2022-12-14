@@ -940,7 +940,7 @@ upEventsCatNoRep.forEach(event => {
     const divCategory = document.createElement("div")
     divCategory.innerHTML = `
         <div>
-            <span style="font-weight: bold;">${event}</span>
+            <span>${event}</span>
         </div>
     `
     tdUCategoriesByID.appendChild(divCategory)
@@ -955,7 +955,7 @@ for (let i = 0; i < arrayUpEvRevenues.length - 1; i++) {
         if (arrayUpEvRevenues[i] === upEventsCatNoRep[e]) {
             divRevenue.innerHTML = `
                 <div style="display: flex; justify-content: space-between;" >
-                    <p>$${arrayUpEvRevenues[i+1]}</p>
+                    <p style="margin: 0;">$${arrayUpEvRevenues[i+1]}</p>
                 </div>
             `
             tdUpRevenuesByID.appendChild(divRevenue)
@@ -972,7 +972,7 @@ for (let i = 0; i < arrayUpEvAttendance.length - 1; i++) {
         if (arrayUpEvAttendance[i] === upEventsCatNoRep[e]) {
             divAttendance.innerHTML = `
                 <div style="display: flex; justify-content: space-between;" >
-                    <p>%${arrayUpEvAttendance[i+1]}</p>
+                    <p style="margin: 0;">%${arrayUpEvAttendance[i+1]}</p>
                 </div>
             `
             tdUpAttendanceByID.appendChild(divAttendance)
@@ -991,7 +991,7 @@ pastEventsCatNoRep.forEach(event => {
     const divCategory = document.createElement("div")
     divCategory.innerHTML = `
         <div>
-            <span style="font-weight: bold;">${event}</span>
+            <span>${event}</span>
         </div>
     `
     tdPCategoriesByID.appendChild(divCategory)
@@ -1005,8 +1005,8 @@ for (let i = 0; i < arrayPastEvRevenues.length - 1; i++) {
     for (let e = 0; e < pastEventsCatNoRep.length; e++) {
         if (arrayPastEvRevenues[i] === pastEventsCatNoRep[e]) {
             divRevenue.innerHTML = `
-                <div style="display: flex; justify-content: space-between;" >
-                    <p>$${arrayPastEvRevenues[i+1]}</p>
+                <div style="justify-content: space-between;" >
+                    <p style="margin: 0;">$${arrayPastEvRevenues[i+1]}</p>
                 </div>
             `
             tdPastRevenuesByID.appendChild(divRevenue)
@@ -1023,7 +1023,7 @@ for (let i = 0; i < arrayPastEvAttendance.length - 1; i++) {
         if (arrayPastEvAttendance[i] === pastEventsCatNoRep[e]) {
             divAttendance.innerHTML = `
                 <div style="display: flex; justify-content: space-between;" >
-                    <p>%${arrayPastEvAttendance[i+1]}</p>
+                    <p style="margin: 0;">%${arrayPastEvAttendance[i+1]}</p>
                 </div>
             `
             tdPastAttendanceByID.appendChild(divAttendance)

@@ -648,3 +648,29 @@ const data = {
       }
   ]
 }
+
+const stored = Number(localStorage.getItem("detail"));
+//console.log(stored)
+
+function renderDetails(event) {
+    const detailsCards = document.getElementById("details_container")
+    detailsCards.innerHTML = `
+        <div class="container-details">
+            <h2>${event.events[stored].name}</h2>   
+            <div class="detail-img">
+                <img <img src="${event.events[stored].image}" class="card-img-top" alt="${event.events[stored].category.replace(" ","-").toLocaleLowerCase()}">
+            </div>
+            <div class="detail-card-body">
+                <span style="text-align: center;">${event.events[stored].description}</span>
+                <div style="display: flex; justify-content: space-between; margin-top: 2%;">
+                    <span>Category: ${event.events[stored].category}</span>
+                    <span>Price: $${event.events[stored].price}</span>
+                </div>
+                <button class="button-details" id="button-details">
+                    <a href="" class="btn btn-primary">Buy Tickets</a>
+                </button>
+            </div>
+        </div>
+    `;
+}
+renderDetails(data);

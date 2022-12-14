@@ -163,6 +163,10 @@ input[type=text] {
     color: #8D86C9;
 }
 
+.button-details {
+    border: none;
+}
+
 .image-card-container {
     padding: 12px;
     height: 30vh;
@@ -363,6 +367,31 @@ td {
 
 .detail-info-container > p {
     font-size: 18px;
+    margin-top: 3%;
+}
+
+.container-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    background-color: white;
+    color: #242038;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.detail-card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-img {
+    padding: 12px;
+    height: 30vh;
+}
+
+#button-details {
+    background-color: white;
     margin-top: 3%;
 }
 

@@ -683,7 +683,7 @@ function setCards() {
       card += `
         <div class="card" id="${data.events[i].category.replace(" ","-").toLocaleLowerCase()}" style="width: 18rem;">
           <div class="image-card-container">
-            <img src="${data.events[i].image}" class="card-img-top" alt="food fair">
+            <img src="${data.events[i].image}" class="card-img-top" alt="${data.events[i].category.replace(" ","-").toLocaleLowerCase()}">
           </div>
           <div class="card-body">
             <h5 class="card-title">${data.events[i].name}</h5>

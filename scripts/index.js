@@ -664,7 +664,7 @@ const arrayCatNoRep = [... new Set(arrayCategories)];
           card += `
             <div class="card" id="${data.events[i].category.replace(" ","-").toLocaleLowerCase()}" style="width: 18rem;">
                 <div class="image-card-container">
-                    <img src="${data.events[i].image}" class="card-img-top" alt="food fair">
+                    <img src="${data.events[i].image}" class="card-img-top" alt="${data.events[i].category.replace(" ","-").toLocaleLowerCase()}">
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">${data.events[i].name}</h5>
@@ -673,7 +673,7 @@ const arrayCatNoRep = [... new Set(arrayCategories)];
                 </div>
                 <div class="bottom-card"> 
                     <span>Price: $${data.events[i].price}</span>
-                    <a href="./pages/details.html" class="btn btn-primary">Go somewhere</a>
+                    <button class="button-details"><a href="./pages/details.html" class="btn btn-primary">Go somewhere</a></button>
                 </div>
             </div>
           `;
@@ -754,4 +754,15 @@ if(checkboxesCheckedValue.length === 0){
 
 })
 
+
+// Page Details ----------------------------------------------------------------------
+function detailsPage() {
+    const buttonCards = document.querySelectorAll(".button-details")
+    for (let i =0; i < buttonCards.length; i++) {
+        buttonCards[i].addEventListener("click", () => {
+            localStorage.setItem("detail", i)
+        })
+    }
+}
+detailsPage() 
 
